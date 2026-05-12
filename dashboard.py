@@ -117,7 +117,7 @@ def main():
         use_sample = st.checkbox("📊 Use sample data", value=not uploaded_file)
 
     # --- Main Content ---
-    st.title("🇲🇾 Personal Spending Risk & Burnout Detector")
+    st.title("Personal Spending Risk & Burnout Detector")
     st.caption(
         "Analyze your spending behavior for financial health and burnout signals"
     )
@@ -167,7 +167,8 @@ def main():
             use_container_width=True,
         )
         st.markdown(
-            f"**Level:** :{get_risk_color(rs['financial_risk_level'])}[{rs['financial_risk_level']}]"
+            f"**Level:** <span class='risk-{rs['financial_risk_level'].lower()}'>{rs['financial_risk_level']}</span>",
+            unsafe_allow_html=True,
         )
     with col2:
         st.plotly_chart(
@@ -177,7 +178,8 @@ def main():
             use_container_width=True,
         )
         st.markdown(
-            f"**Level:** :{get_risk_color(rs['burnout_risk_level'])}[{rs['burnout_risk_level']}]"
+            f"**Level:** <span class='risk-{rs['burnout_risk_level'].lower()}'>{rs['burnout_risk_level']}</span>",
+            unsafe_allow_html=True,
         )
 
     # --- Key Metrics ---
